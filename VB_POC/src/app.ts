@@ -9,6 +9,7 @@ import { registerCompareRoutes } from "./modules/compare/routes.js";
 import { registerFundRoutes } from "./modules/funds/routes.js";
 import { registerPlanRoutes } from "./modules/plans/routes.js";
 import { registerSearchRoutes } from "./modules/search/routes.js";
+import { registerIngestionRoutes } from "./modules/ingestion/routes.js";
 import { registerErrorHandler } from "./plugins/error-handler.js";
 
 export async function buildApp(config: AppConfig, database = createPool(config.DATABASE_URL)): Promise<FastifyInstance> {
@@ -47,6 +48,7 @@ export async function buildApp(config: AppConfig, database = createPool(config.D
   await app.register(registerPlanRoutes);
   await app.register(registerBenchmarkRoutes);
   await app.register(registerAdminRoutes, { prefix: "/api/admin" });
+  await app.register(registerIngestionRoutes, { prefix: "/api/admin/import" });
 
   app.addHook("onClose", async () => {
     await db.end();
