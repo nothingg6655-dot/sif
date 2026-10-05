@@ -14,8 +14,13 @@
     "outDir": "dist",
     "rootDir": "src",
     "declaration": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "types": ["node"]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.test.ts"]
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/scratch_*.ts",
+    "src/mobile-test-server.ts"
+  ]
 }

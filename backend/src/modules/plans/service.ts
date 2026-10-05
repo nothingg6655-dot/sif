@@ -142,7 +142,7 @@ export async function getRollingReturns(
   if (stored.rows.length > 0) {
     return {
       rollingPeriod: period,
-      data: stored.rows.map((row) => ({
+      data: stored.rows.map((row: any) => ({
         date: requireIsoDate(row.observation_date as Date | string),
         return: toJsonNumber(row.return_value as string | null),
       })),
